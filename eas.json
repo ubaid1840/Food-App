@@ -1,0 +1,26 @@
+{
+  "build": {
+    "preview": {
+      "env": {
+        "EXPO_PUBLIC_ADDRESS": "123, ABC Street",
+        "EXPO_PUBLIC_NAME": "Ahtsham"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview2": {
+      "android": {
+        "gradleCommand": ":app:assembleRelease"
+      },
+      "channel": "preview2"
+    },
+    "preview3": {
+      "developmentClient": true,
+      "channel": "preview3"
+    },
+    "production": {
+      "channel": "production"
+    }
+  }
+}
