@@ -15,7 +15,7 @@ export default function CartScreen(props) {
     const theme = useTheme()
     const [openConfirm, setOpenConfirm] = useState(false)
     const [total, setTotal] = useState(0)
-    const {state : CartState, setCart, clearCart} = useContext(CartContext)
+    const { state: CartState, setCart, clearCart } = useContext(CartContext)
 
 
     useEffect(() => {
@@ -42,7 +42,7 @@ export default function CartScreen(props) {
 
     }
 
-    function handleRemoveItem (item) {
+    function handleRemoveItem(item) {
         const temp = CartState.value.data.filter((eachItem, index) => index !== item)
         setCart([...temp])
     }
@@ -57,7 +57,8 @@ export default function CartScreen(props) {
                     <Text category="h6" style={{ marginLeft: 10 }} >Cart</Text>
                 </View>
                 <TouchableOpacity onPress={() => {
-                    setOpenConfirm(true)}}>
+                    setOpenConfirm(true)
+                }}>
                     <Text status="success" category="p1">Done</Text>
                 </TouchableOpacity>
             </Layout>
@@ -68,10 +69,10 @@ export default function CartScreen(props) {
                         <View style={{ padding: 10, backgroundColor: '#EAEAEA', alignItems: 'center', justifyContent: 'center', borderRadius: 10 }}>
                             <Image style={{ height: 80, width: 80, borderRadius: 50 }} source={{ uri: eachItem?.image }} />
                         </View>
-                        <View style={{ justifyContent: 'space-between', paddingHorizontal:20, flex:1 }}>
-                            <View style={{ width:'100%', flexDirection: 'row', justifyContent:'space-between', }}>
+                        <View style={{ justifyContent: 'space-between', paddingHorizontal: 20, flex: 1 }}>
+                            <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between', }}>
                                 <Text>{eachItem.item}</Text>
-                                <TouchableOpacity onPress={()=> handleRemoveItem(index)} style={{ backgroundColor: theme['color-danger-500'], borderRadius: 50, alignItems: 'center', justifyContent: 'center', }}>
+                                <TouchableOpacity onPress={() => handleRemoveItem(index)} style={{ backgroundColor: theme['color-danger-500'], borderRadius: 50, alignItems: 'center', justifyContent: 'center', }}>
                                     <Entypo name="cross" size={20} style={{ color: 'white' }} />
                                 </TouchableOpacity>
                             </View>
@@ -93,7 +94,7 @@ export default function CartScreen(props) {
             </ScrollView>
             {openConfirm &&
 
-                <TouchableOpacity onPress={()=> setOpenConfirm(false)} style={{ position: 'absolute', width: '100%', height: '100', backgroundColor: '#00000042', top:0, right:0, left:0, bottom:0 }}>
+                <TouchableOpacity onPress={() => setOpenConfirm(false)} style={{ position: 'absolute', width: '100%', height: '100', backgroundColor: '#00000042', bottom: 0 }}>
 
                     <Layout style={{ width: '100%', height: 250, position: 'absolute', bottom: 0, backgroundColor: '#EAEAEA', borderTopRightRadius: 30, borderTopLeftRadius: 30, padding: 20 }}>
                         <Text category="p2" style={{ color: '#818181' }}>Delivery Address</Text>
@@ -103,7 +104,7 @@ export default function CartScreen(props) {
                             <Text category="h5" style={{ marginLeft: 10, color: theme['color-danger-500'] }}>${total}</Text>
                         </View>
                         <View style={{ marginTop: 20 }}>
-                            <Button onPress={()=> props.navigation.navigate({name : 'payment', params : {total : total}})}>Place Order</Button>
+                            <Button onPress={() => props.navigation.navigate({ name: 'payment', params: { total: total } })}>Place Order</Button>
                         </View>
                     </Layout>
                 </ TouchableOpacity>
